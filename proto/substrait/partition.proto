@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package substrait;
+
+import "substrait/algebra.proto";
+
+option csharp_namespace = "Substrait.Protobuf";
+option go_package = "github.com/substrait-io/substrait-go/proto";
+option java_multiple_files = true;
+option java_package = "io.substrait.proto";
+
+message Partition{
+    int64 partition_id = 1;
+    string path = 2;
+    
+    repeated Block blocks = 3;
+
+    message Block{
+        int64 block_id = 1;
+        repeated string attributes = 2;
+        repeated Interval boundary = 3;
+
+        message Interval{
+            string attribute = 1;
+            Expression.Literal low = 2;
+            Expression.Literal high = 3;
+        }
+        optional int64 rows_num = 4;
+    }
+}
+
+message PartitionList{
+    repeated Partition partitions = 1;
+}
