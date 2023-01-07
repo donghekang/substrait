@@ -226,4 +226,5 @@ message NamedStruct {
   // list of names in dfs order
   repeated string names = 1;
   Type.Struct struct = 2;
+  repeated uint32 sizes = 3;
 }
