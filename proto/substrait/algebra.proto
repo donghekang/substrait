@@ -366,6 +366,7 @@ message Rel {
     ExtensionLeafRel extension_leaf = 11;
     CrossRel cross = 12;
     ExchangeRel exchange = 13;
+    WriteRel write = 14;
   }
 }
 
