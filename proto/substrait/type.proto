@@ -45,6 +45,8 @@ message Type {
     // encountered, treat it as being non-nullable and having the default
     // variation.
     uint32 user_defined_type_reference = 31 [deprecated = true];
+
+    StringEnum string_enum = 33;
   }
 
   enum Nullability {
@@ -91,6 +93,12 @@ message Type {
   message String {
     uint32 type_variation_reference = 1;
     Nullability nullability = 2;
+  }
+  
+  message StringEnum {
+    uint32 type_variation_reference = 1;
+    Nullability nullability = 2;
+    repeated string all_values = 3;
   }
 
   message Binary {
